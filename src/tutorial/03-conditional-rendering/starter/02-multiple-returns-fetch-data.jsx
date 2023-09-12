@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react';
 
-
 //Url for fetching data
 const url = 'https://api.github.com/users/QuincyLarson';
 
 const MultipleReturnsFetchData = () => {
 
-
   const [user, setUser] = useState(null)
 
-
-  
   //set the state of the program
   const [isLoading, setIsLoading] = useState(true)// Always set to TRUE
   const [isError, setIsError] = useState(false)
@@ -18,17 +14,14 @@ const MultipleReturnsFetchData = () => {
   //set up your async function first 
   //call function 
   //Outside of UE function block >> if(conditional statements) for {loading} , and {error} 
-  // 
-  
-  useEffect(() => {
-    
-
+  useEffect(() => {   
     const getData =  async () => {
       try {
         const response = await fetch(url)
     const userData = await response.json()
     setUser(userData)
     console.log(userData);
+ 
   } catch (error) {
     setIsError(true)
     console.log(error);
@@ -47,9 +40,6 @@ if(isLoading) {
 if(isError) {
   return <h2>There was an error fetching the data...</h2>
 }
-
-
-
 //!{try, Catch} block and {if} conditionals need to be fully executed before destructuring
 //!destructure right before the return statement that your allocating property values
 const {avatar_url,name,company,bio}= user
